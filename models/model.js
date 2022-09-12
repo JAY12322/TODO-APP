@@ -79,5 +79,5 @@ taskedsch.pre('save',async function(next){
     next();
 });
 
-const games = mongoose.model('tasked', taskedsch);
+const games = mongoose.model("taskeds", taskedsch);
 module.exports = games;

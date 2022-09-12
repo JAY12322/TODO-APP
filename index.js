@@ -27,9 +27,10 @@ app.post('/reg', async (req, res) => {
     const user = new coll(req.body);
 
     // to see users abck deatils from database
-    console.log(`andddddddddddd ->>>>>> ${user._doc.em}`);
+    // console.log(`andddddddddddd ->>>>>> ${user._doc.em}`);
     try {
-        await user.save();
+        const val = await user.save();
+
         let snd = user._doc;
         const tkk = snd._id.toString();
         let tokens = jwt.sign({ _id: tkk }, 'hello');
@@ -121,7 +122,7 @@ app.post('/delete', async (req,res) => {
 app.post('/deleteall', async (req,res) => {
     const taskid = req.body.par;
     const obj = {_id:taskid};
-    
+
     try {
         const user = await taskdb.findOne(obj);
         const userid = user.owner.toString();
@@ -135,10 +136,10 @@ app.post('/deleteall', async (req,res) => {
 
         let cnt = 0;
         val.taskss.map((ele) => {
-            taskdb.deleteOne({_id:ele._id});
+            taskdb.remove({_id:ele._id});
             cnt++;
         });
-
+console.log('deleted all');
         res.send({st:'ok',mess:cnt});
     }
     catch(err) {
