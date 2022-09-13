@@ -9,8 +9,7 @@ const taskdb = require('./models/tasks.js');
 const taskz = require('./taskss.js');
 
 // const tsk = require('./models/tasks.js');
-const PORT = 5000;
-
+const PORT = process.env.PORT || 5000;
 
 // body parser for json request response
 app.use(bodyParser.json());
