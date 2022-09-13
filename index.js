@@ -130,7 +130,7 @@ app.post('/deleteall', async (req,res) => {
         const user1 = await coll.findOne({ _id: userid});
         const val = await user1.populate({ path: 'taskss' });
 
-        if(!val.taskss){
+        if(!val.taskss) {
             throw new Error('Not Found');
         };
 

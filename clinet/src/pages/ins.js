@@ -4,7 +4,6 @@ import { createStore, combineReducers as cr } from 'redux';
 // import { decodeToken} from "react-jwt";
 
 
-
 function App() {
     const locc = ll();
 
@@ -23,7 +22,7 @@ function App() {
         navi('/taskinsert', { state: { id: locc.state.id } });
     };
 
-    const removingall = (event,par)=>{
+    const removingall = (event, par) => {
         fetch('http://localhost:5000/deleteall', {
             method: "POST",
             headers: {
@@ -37,7 +36,7 @@ function App() {
             .then((dt) => {
                 if (dt.st !== "ok") {
                     throw `${dt.st}`;
-                  }
+                }
                 alert(`Deleted -: ${dt.mess} element`);
             })
             .catch((err) => {
@@ -61,7 +60,7 @@ function App() {
             .then((dt) => {
                 if (dt.st !== "ok") {
                     throw `${dt.st}`;
-                  }
+                }
                 alert(`Deleted -: ${dt.mess} element`);
             })
             .catch((err) => {
@@ -175,36 +174,36 @@ function App() {
             });
     };
 
-
     useEffect(() => {
         registrys();
     });
 
     return (
+        
 
         <div className="App">
-            <button onClick={event => removingall(event, quote[0]._id)}><u>Remove All Task</u></button><br/>
-            <input value={filtersz} onChange={(e) => { setFiltersz(e.target.value) }}
-                type="text" placeholder='Enter text to filter....' /><br />
-            <ul>
-                {quote.map((friend, index) => (
-                    <li key={index}>
-                        <span>Description: {friend.desc}</span>{" , "}
-                        <span>Completed: {
-                            friend.completed ? <span><u>Completed</u></span> : <span><u>Not Completed </u></span>
-                        }
-                        </span>{" , "}
-                        <span>Status: {friend.status ? <span><u>Pending</u></span> : <span><u>Not Pending</u></span>}
-                        </span>
-                        <button onClick={event => removing(event, friend._id)}><u>Remove</u></button>
-                    </li>
-                )
-                )}
-            </ul>
-            <button onClick={taskins}><u>Insert New Task</u></button>
-            <button onClick={navigateHome}>Back to login</button><br />
+                <button onClick={event => removingall(event, quote[0]._id)}><u>Remove All Task</u></button><br />
+                <input value={filtersz} onChange={(e) => { setFiltersz(e.target.value) }}
+                    type="text" placeholder='Enter text to filter....' /><br />
+                <ul>
+                    {quote.map((friend, index) => (
+                        <li key={index}>
+                            <span>Description: {friend.desc}</span>{" , "}
+                            <span>Completed: {
+                                friend.completed ? <span><u>Completed</u></span> : <span><u>Not Completed </u></span>
+                            }
+                            </span>{" , "}
+                            <span>Status: {friend.status ? <span><u>Pending</u></span> : <span><u>Not Pending</u></span>}
+                            </span>
+                            <button onClick={event => removing(event, friend._id)}><u>Remove</u></button>
+                        </li>
+                    )
+                    )}
+                </ul>
+                <button onClick={taskins}><u>Insert New Task</u></button>
+                <button onClick={navigateHome}>Back to login</button><br />
 
-        </div>
+            </div> 
     );
 }
 

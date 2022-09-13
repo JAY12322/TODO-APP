@@ -8,7 +8,6 @@ import Dashh from "./pages/ins.js";
 import Redu from './pages/reduc';
 
 
-
 class App extends React.Component {
 
     render() {

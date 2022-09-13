@@ -6,9 +6,8 @@ import reportWebVitals from './reportWebVitals';
 
 import subm from './pages/storer/storers';
 import { add_exp, edit } from './pages/actionsFiles/expp';
-import { setext, sortamt } from './pages/actionsFiles/filtt';
-import upda from './pages/selectors/sortt';
 import { Provider as Prv } from 'react-redux';
+import { setext, sortamt,sortid } from './pages/actionsFiles/filtt';
 
 const store = subm();
 
@@ -22,15 +21,19 @@ store.dispatch(add_exp({
 store.dispatch(add_exp({
   desc: 'are you bc',
   note: 'avengers assmemblers',
-  id: 208190,
+  id: 2080,
   amt: 230
 }));
 
-store.dispatch(setext('bc'));
-store.dispatch(sortamt());
+store.dispatch(add_exp({
+  desc: 'kevlan',
+  note: 'plays cricket',
+  id: 20,
+  amt: 23064
+}));
 
-const dis = store.getState();
-const fin = upda(dis.exp, dis.filter);
+store.dispatch(sortid());
+store.dispatch(setext(''));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
